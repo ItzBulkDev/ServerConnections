@@ -11,32 +11,36 @@ namespace ServerConnections\tasks;
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\utils\Utils;
 use ServerConnections\Main;
+use pocketmine\Server;
 
 class CommandCheck extends AsyncTask
 {
     public $cmds;
     public $main;
+    public $key;
 
-    public function __construct($plugin){
-        $this->plugin = $plugin;
+    public function __construct($plugin, $key){
         $this->main = new Main();
+        $this->key = $key;
     }
 
     public function onRun()
     {
-        $this->cmds = Utils::getURL('http://damnbulk.com/ServerConnections/api/GetCommandQueue.php?key=' . $this->main->key);
+        $this->cmds = Utils::getURL('http://damnbulk.com/ServerConnections/api/GetCommandQueue.php?key=' . $this->key);
     }
 
     public function onCompletion(Server $server)
     {
         if ($this->cmds !== "error") {
-            $array = json_decode($this->cmds);
-            foreach ($array as $command) {
-                $this->main->runCommand($command);
-                unset($this->cmds);
+            if($this->cmds !== 'none') {
+                $array = json_decode($this->cmds);
+                foreach ($array as $command) {
+                    $this->main->runCommand($command);
+                    unset($this->cmds);
+                }
             }
         }else{
-            $this->main->getServer()->getLogger()->critical("Unknown key! Visit damnbulk.com/ServerConnections and register to get your key!");
+            $server->getPluginManager()->getPlugin("ServerConnections")->getServer()->getLogger()->critical("Unknown key! Visit damnbulk.com/ServerConnections and register to get your key! " . $this->key);
         }
     }
 }
