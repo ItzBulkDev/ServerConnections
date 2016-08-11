@@ -33,14 +33,19 @@ class CommandCheck extends AsyncTask
     {
         if ($this->cmds !== "error") {
             if($this->cmds !== 'none') {
-                $array = json_decode($this->cmds);
+                if(strpos($this->cmds, "%NEW%")){
+                $array = explode("%NEW%", $this->cmds);
                 foreach ($array as $command) {
                     $this->main->runCommand($command);
-                    unset($this->cmds);
+                    $server->getPluginManager()->getPlugin("ServerConnections")->getServer()->getLogger()->info("Received command " . $command);
                 }
-            }
+        }else{
+            $server->getPluginManager()->getPlugin("ServerConnections")->runCommand($this->cmds);
+            $server->getPluginManager()->getPlugin("ServerConnections")->getServer()->getLogger()->info("Received command " . $this->cmds);
+        }
+    }
         }else{
             $server->getPluginManager()->getPlugin("ServerConnections")->getServer()->getLogger()->critical("Unknown key! Visit damnbulk.com/ServerConnections and register to get your key! " . $this->key);
         }
-    }
+}
 }
