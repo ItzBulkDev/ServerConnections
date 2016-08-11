@@ -36,7 +36,7 @@ class Main extends PluginBase{
 
     public function check()
     {
-        $this->getServer()->getScheduler()->scheduleAsyncTask(new CommandCheck($this));
+        $this->getServer()->getScheduler()->scheduleAsyncTask(new CommandCheck($this, $this->getConfig()->get("key")));
     }
 
     public function runCommand($command)
