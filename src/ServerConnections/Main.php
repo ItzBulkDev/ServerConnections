@@ -41,7 +41,8 @@ class Main extends PluginBase{
 
     public function runCommand($command)
     {
-        $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $command);
+    	$cmd = str_replace('"', "", $command); 
+        $this->getServer()->dispatchCommand(new ConsoleCommandSender, $cmd);
     }
 
 }
