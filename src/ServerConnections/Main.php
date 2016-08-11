@@ -9,7 +9,6 @@
 namespace ServerConnections;
 
 use pocketmine\command\ConsoleCommandSender;
-use pocketmine\command\RemoteConsoleCommandSender;
 use pocketmine\plugin\PluginBase;
 use ServerConnections\tasks\CallCheckTask;
 use ServerConnections\tasks\CommandCheck;
