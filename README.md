@@ -8,7 +8,8 @@ Steps:
 * Go to http://damnbulk.com/ServerConnections and enter a command and it will run on your server
 
 # WEB API
-API Link: http://damnbulk.com/ServerConnections/api/AddCommandToQueue.php?cmd=command to run&key=Your Key
+API Link: http://damnbulk.com/ServerConnections/api/AddCommandToQueue.php?cmd=Command&key=Key
 
+Yes, you can use spaces in the command value.
 You can use cURL and what not to use this.
 This is especially good for Shops that don't use BuyCraft
