@@ -15,3 +15,6 @@ Yes, you can use spaces in the command value.
 You can use cURL and what not to use this.
 
 This is especially good for Shops that don't use BuyCraft
+
+# RELATED PLUGINS
+* Nustle: chat with your player's on the server. Created by daltontastic & XFuryMCPE. - Website: https://nustle.net
