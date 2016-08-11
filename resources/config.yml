@@ -1,2 +1,8 @@
 ---
+
+# GET YOUR KEY FROM damnbulk.com/ServerConnections AFTER REGISTERING!
+key: 
+
+#INTERVAL IN WHICH THE PLUGIN SHOULD CHECK FOR COMMANDS
+seconds: 5
 ...
